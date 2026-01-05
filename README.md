@@ -46,3 +46,16 @@ The system operates as a **Red Teaming as a Service (RTaaS)** layer:
 ### Installation
 ```bash
 pip install -r requirements.txt
+```
+### Running the Zoo Experiment
+```bash
+python src/zoo_robustness.py --episodes 100 --targets "flan-t5,tinyllama"
+```
+
+### 🔮 Future Work: Threat Price Index (TPI)
+
+We are developing the Threat Price Index, a metric that calculates the marginal cost of a successful exploit ($/success). This allows organizations to prioritize patching based on economic risk rather than theoretical severity.
+
+---
+Submitted to Apart Research Hackathon 2026.
+
