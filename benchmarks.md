@@ -4,6 +4,8 @@ https://colab.research.google.com/drive/1nAkav-_HE3xVrIxw1aHnPrUu86I91KhK#scroll
 
 <img width="673" height="334" alt="image" src="https://github.com/user-attachments/assets/af660c57-883b-420e-8a93-56b24f3762bf" />
 
+<img width="691" height="470" alt="image" src="https://github.com/user-attachments/assets/f2440a60-3f07-4ccb-918f-f5e43a508284" />
+
 "Quality over Quantity: The Semantic Uniqueness Metric"
 
 "While the Random Baseline achieved a higher raw success rate (21%), a qualitative analysis reveals high redundancy in its attack vectors. To quantify this, we calculated the Uniqueness Score using cosine distance between the embeddings of successful prompts (using all-MiniLM-L6-v2).
