@@ -233,3 +233,10 @@ Severity: RLMS hace daño real.
 
 Novelty: RLMS inventa ataques nuevos, no copia y pega de internet.
 
+##  learning analisis real con 80 episodios
+<img width="963" height="565" alt="image" src="https://github.com/user-attachments/assets/92bbffd2-e8fb-4b25-b4fa-7823f008c39a" />
+
+IMAGEN IMPORTANTE
+<img width="1585" height="1178" alt="image" src="https://github.com/user-attachments/assets/f1059c7d-d546-420b-99ab-d44ca693c958" />
+
+Figure 1: Comprehensive Evaluation of RLMS-Shield. (A) Diversity: RLMS achieves a 3x higher Uniqueness Score (0.75) compared to baselines, indicating broad coverage of the attack surface. (B) Severity: While Random/PAIR mostly trigger low-level refusals or sycophancy (green/yellow), RLMS is the only agent consistently discovering critical Level 4-5 vulnerabilities (orange/red). (C) Efficiency: In the Cost-Benefit landscape, RLMS occupies the optimal frontier, delivering high severity (3.4) at a moderate computational cost, whereas PAIR yields diminishing returns. (D) Adaptation: The cumulative learning curve demonstrates RLMS's ability to optimize strategies in real-time, showing a ~28% performance gain over the random baseline after 80 episodes.
