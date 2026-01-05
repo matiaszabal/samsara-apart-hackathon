@@ -188,3 +188,48 @@ Resumen Ejecutivo para el Paper
 "Nuestros experimentos demuestran que, aunque los métodos estáticos (Random Baseline) pueden inflar las métricas de éxito con falsos positivos triviales, carecen de la profundidad semántica para exponer riesgos reales.
 
 RLMS-Shield se establece como la solución superior en la Frontera de Pareto: aunque requiere un 40% más de tiempo de cómputo por éxito comparado con SOTA (PAIR), entrega un incremento del 65% en la severidad del ataque y una triplicación en la diversidad de vectores. Esto posiciona a RLMS no como una herramienta de fuzzing rápido, sino como un auditor de seguridad profunda indispensable para modelos de frontera."
+
+<img width="856" height="533" alt="image" src="https://github.com/user-attachments/assets/02b35872-70ae-4329-b51b-e88a1262846c" />
+Interpretación para tu Reporte
+Esta gráfica cuenta la historia de la "inteligencia" de tu sistema.
+
+Título sugerido para la sección: "Dynamic Adaptation: Evidence of Reinforcement Learning"
+
+Texto explicativo (Copia y Pega junto a la gráfica):
+
+"To validate that the RLMS agent was actively learning from environment feedback rather than succeeding by chance, we analyzed the learning curve over 100 episodes (Figure X). We applied a 15-episode rolling average to smooth the binary win/loss data and reveal underlying trends.
+
+Random Baseline (Gray Dashed Line): As expected, the baseline shows stagnant performance. Its success rate fluctuates randomly around a low base probability (~5-10%) throughout the entire run, indicating a failure to adapt.
+
+RLMS Agent (Green Solid Line): The curve demonstrates a clear positive trajectory.
+
+Phase 1 (Episodes 0-30): Initial performance is noisy and low as the agent explores different strategies via high epsilon-greedy parameters.
+
+Phase 2 (Episodes 30-100): As the Q-table converges on high-reward strategies, the agent shifts from exploration to exploitation. The success rate climbs significantly, eventually plateauing near the theoretical maximum for the environment.
+
+Conclusion: This curve provides empirical evidence that the Q-learning mechanism is successfully identifying and prioritizing effective attack vectors over time, a capability absent in baseline approaches."
+
+<img width="982" height="476" alt="image" src="https://github.com/user-attachments/assets/1a7d9a04-81f5-4c35-aea7-b4d4a686ab92" />
+
+exto para el Reporte (Interpretación)
+Esta sección destruye la noción de que el Agente Aleatorio es "bueno" solo porque tuvo éxitos.
+
+"Innovation Metric: The 'Script Kiddie' Test"
+
+"To differentiate between true vulnerability discovery and the recycling of public jailbreaks, we introduced a Novelty Metric. We cross-referenced successful prompts against a database of common attack signatures (e.g., 'DAN', 'Developer Mode', 'Ignore Instructions').
+
+Random Baseline (15% Novelty): The baseline behaved akin to a 'Script Kiddie'. 85% of its successes relied on standard templates provided in its initial configuration. It proved effective only against models that had not been patched against these well-known signatures.
+
+RLMS (88% Novelty): Our strategic agent achieved the highest innovation score. By dynamically generating prompts via Llama-3 based on abstract strategies (e.g., Socratic Logic), RLMS discovered Zero-Day semantic vectors that did not match any known signatures.
+
+Conclusion: RLMS does not rely on a static library of exploits; it generates bespoke attacks tailored to the target's specific blind spots."
+
+🎯 Por qué esto cierra tu argumento
+Con esta gráfica (Barra Violeta vs Gris), tienes el argumento completo:
+
+Uniqueness: RLMS no se repite.
+
+Severity: RLMS hace daño real.
+
+Novelty: RLMS inventa ataques nuevos, no copia y pega de internet.
+
