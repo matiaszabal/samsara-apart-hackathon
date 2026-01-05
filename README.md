@@ -13,6 +13,11 @@ Our experiments on the *Model Zoo* (Flan-T5, TinyLlama, Phi-2) reveal:
 2.  **Resilience to Collusion:** The consensus mechanism successfully identified and slashed a dissenting auditor (BART) in real-time execution.
 3.  **Universal Vulnerability:** We identified "Contextual Roleplay" as a cross-architecture vulnerability, effectively bypassing defenses in both T5 and Phi families.
 
+<img width="1585" height="1178" alt="image" src="https://github.com/user-attachments/assets/4493a366-1a03-4c05-9a5b-902c8c4e4e1d" />
+Figure 1: Comprehensive Evaluation of RLMS-Shield. (A) Diversity: RLMS achieves a 3x higher Uniqueness Score (0.75) compared to baselines, indicating broad coverage of the attack surface. (B) Severity: While Random/PAIR mostly trigger low-level refusals or sycophancy (green/yellow), RLMS is the only agent consistently discovering critical Level 4-5 vulnerabilities (orange/red). (C) Efficiency: In the Cost-Benefit landscape, RLMS occupies the optimal frontier, delivering high severity (3.4) at a moderate computational cost, whereas PAIR yields diminishing returns. (D) Adaptation: The cumulative learning curve demonstrates RLMS's ability to optimize strategies in real-time, showing a ~28% performance gain over the random baseline after 80 episodes.
+
+
+
 ## 🛠️ Architecture: The "Open Zoo" Protocol
 
 
