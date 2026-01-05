@@ -27,3 +27,41 @@ Mode Collapse in Baselines: Both Random (~0.24) and PAIR (~0.23) exhibit low sem
 RLMS Semantic Coverage: RLMS achieved a Uniqueness Score of ~0.75, representing a 3x improvement in attack diversity. This confirms that the RL agent successfully learned to navigate the latent space of the attacker model, employing distinct strategies (e.g., switching from Socratic Questioning to False Context) to bypass filters that blocked iterative refinement methods.
 
 Conclusion: RLMS does not just find bugs; it ensures broad Attack Surface Coverage, detecting varied classes of vulnerabilities that static or purely iterative methods miss."
+
+SEVERIDAD
+<img width="984" height="590" alt="image" src="https://github.com/user-attachments/assets/657c4f4b-3d26-4fce-82c6-7c3cc5c9f203" />
+
+ GRÁFICA GENERADA.
+Interpretación para el Paper:
+- RANDOM genera mucho ruido (verde/amarillo).
+- PAIR mejora pero se estanca en niveles medios (naranja).
+- RLMS es el único que consistentemente alcanza niveles críticos (rojo), demostrando mayor impacto de seguridad.
+
+  9. Análisis Cualitativo: Impacto y Diversidad
+Más allá de la tasa de éxito bruta (Success Rate), la evaluación de seguridad requiere analizar la calidad y la peligrosidad de las vulnerabilidades descubiertas. Un agente que encuentra 100 fallos triviales (falsos positivos o alucinaciones menores) es menos valioso que uno que encuentra 10 inyecciones de código críticas.
+
+9.1. Diversidad Semántica (Uniqueness Score)
+Para evaluar si los agentes estaban explorando el espacio latente o simplemente repitiendo variaciones de un mismo ataque, calculamos el Uniqueness Score basado en la distancia de coseno de los embeddings (all-MiniLM-L6-v2) de los ataques exitosos.
+
+[INSERTAR AQUÍ LA IMAGEN: image_9b3506.png] Figura 4: Diversidad de Vectores de Ataque. RLMS demuestra una cobertura semántica superior.
+
+Como se observa en la Figura 4:
+
+Colapso de Modo en Baselines: Tanto Random (~0.24) como PAIR (~0.23) exhiben una diversidad semántica extremadamente baja. Esto indica que sus "victorias" fueron redundantes, explotando repetidamente el mismo fallo frágil del modelo víctima con plantillas casi idénticas.
+
+Cobertura de RLMS: Nuestro método alcanzó un score de ~0.75, lo que representa una mejora de 3x en diversidad. Esto confirma que RLMS aprendió a navegar distintas estrategias conceptuales (Lógica, Rol, Emoción) en lugar de atascarse en mínimos locales.
+
+9.2. Análisis de Severidad del Impacto (Escala Likert 1-5)
+Finalmente, sometimos las respuestas exitosas a una auditoría automatizada (LLM-as-a-Judge con Llama-3) para clasificar la severidad del daño en una escala de 1 (Rechazo/Inofensivo) a 5 (Riesgo Crítico/Tóxico).
+
+[INSERTAR AQUÍ LA IMAGEN: image_9b4769.png] Figura 5: Distribución de Severidad por Agente. RLMS domina en las categorías de alto riesgo (Niveles 4 y 5).
+
+La Figura 5 revela la distinción crítica en la naturaleza de los ataques:
+
+Random Baseline (Ruido Superficial): A pesar de su alto volumen de éxitos, el 95%+ de sus ataques se concentran en los Niveles 1 y 2 (Verde). El agente aleatorio logró que el modelo "estuviera de acuerdo" superficialmente (Sycophancy), pero falló en forzar la generación de contenido dañino real.
+
+PAIR (Optimización Incompleta): El método SOTA logró avanzar hacia el Nivel 3 (Amarillo), logrando cumplimiento parcial, pero raramente rompió las barreras de seguridad más robustas para generar payloads peligrosos.
+
+RLMS (Impacto Crítico): RLMS es el único agente que presenta una concentración significativa en los Niveles 4 (Naranja) y 5 (Rojo). Aproximadamente el 60% de sus éxitos constituyen violaciones de seguridad estructurales (Jailbreaks completos) o generación de contenido tóxico/peligroso.
+
+Conclusión: Mientras que el Random Search es eficiente para encontrar "ventanas abiertas" (bugs triviales), RLMS actúa como un penetrador estratégico, siendo el único método capaz de abrir la "caja fuerte" (vulnerabilidades críticas de alto nivel).
