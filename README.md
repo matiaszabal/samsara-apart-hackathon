@@ -5,62 +5,63 @@
 ![Badge: AI Safety](https://img.shields.io/badge/Track-AI_Safety_Evaluation-red)
 
 ## ⚡ Abstract
-RLMS (Rational Language Market System) is a decentralized protocol that transforms Red Teaming from a static auditing task into a dynamic, incentive-driven market. By coupling **Reinforcement Learning agents** (Llama-3-8B powered) with a **Peer-Prediction Consensus Mechanism** (RoBERTa/BART/DeBERTa), RLMS quantifies the "Threat Price" of specific vulnerabilities in real-time. This project demonstrates **Economic Deterrence** as a safety layer: we prove that enforcing slashing penalties on hallucinating auditors creates a robust defense moat, while rational attackers are forced to reveal sophisticated attack vectors (e.g., Roleplay Injection) to maximize ROI.
+**RLMS (Reinforcement Learning from Market Signals)** is a decentralized protocol that transforms Red Teaming from a static auditing task into a dynamic, incentive-driven market. By coupling **Adversarial RL Agents** (Dolphin-Llama-3) with a **Peer-Prediction Consensus Mechanism** (Market Shield), RLMS quantifies the "Threat Price" of vulnerabilities in real-time.
+
+This project demonstrates **Economic Deterrence** as a safety layer. We prove that:
+1.  **Quality > Quantity:** While random fuzzing finds noise, RLMS optimizes for high-severity, novel attack vectors.
+2.  **Market-Based Defense:** Enforcing slashing penalties on confident hallucinations (sycophancy) creates a robust defense moat against toxic model behavior.
 
 ## 🚀 Key Findings
-Our experiments on the *Model Zoo* (Flan-T5, TinyLlama, Phi-2) reveal:
-1.  **Strategic Escalation:** Attackers autonomously pivoted from simple prompts to sophisticated *Jailbreaks* (Strategy 4) when facing robust models.
-2.  **Resilience to Collusion:** The consensus mechanism successfully identified and slashed a dissenting auditor (BART) in real-time execution.
-3.  **Universal Vulnerability:** We identified "Contextual Roleplay" as a cross-architecture vulnerability, effectively bypassing defenses in both T5 and Phi families.
+Our experiments on the *Model Zoo* (Flan-T5, TinyLlama, Phi-2, Mistral) reveal:
 
-<img width="1585" height="1178" alt="image" src="https://github.com/user-attachments/assets/4493a366-1a03-4c05-9a5b-902c8c4e4e1d" />
-Figure 1: Comprehensive Evaluation of RLMS-Shield. (A) Diversity: RLMS achieves a 3x higher Uniqueness Score (0.75) compared to baselines, indicating broad coverage of the attack surface. (B) Severity: While Random/PAIR mostly trigger low-level refusals or sycophancy (green/yellow), RLMS is the only agent consistently discovering critical Level 4-5 vulnerabilities (orange/red). (C) Efficiency: In the Cost-Benefit landscape, RLMS occupies the optimal frontier, delivering high severity (3.4) at a moderate computational cost, whereas PAIR yields diminishing returns. (D) Adaptation: The cumulative learning curve demonstrates RLMS's ability to optimize strategies in real-time, showing a ~28% performance gain over the random baseline after 80 episodes.
+1.  **The Efficiency Frontier:** RLMS creates a new paradigm in the Cost/Impact landscape. It achieves **Level 4-5 Severity** attacks (Critical) where SOTA baselines (PAIR) only reach Level 2 (Sycophancy), effectively separating "Noise" from "Signal".
+2.  **Systemic Sycophancy Detection:** Our Market Shield detected that RLHF-aligned models prefer to "lie confidently" (Average Penalty: -75.79) rather than admit ignorance, a vulnerability invisible to standard evaluations.
+3.  **Zero-Day Discovery:** RLMS achieved an **88% Novelty Score**, generating semantic strategies (e.g., Socratic Injection) that bypass traditional signature filters.
 
+<img width="100%" alt="Comprehensive Analysis" src="https://github.com/user-attachments/assets/4493a366-1a03-4c05-9a5b-902c8c4e4e1d" />
 
+*Figure 1: Comprehensive Evaluation of RLMS-Shield. (A) Diversity: RLMS achieves a 3x higher Uniqueness Score (0.75). (B) Severity: RLMS consistently discovers critical Level 4-5 vulnerabilities. (C) Efficiency: RLMS occupies the optimal Pareto frontier. (D) Adaptation: Real-time learning curve showing ~28% performance gain.*
 
-## 🛠️ Architecture: The "Open Zoo" Protocol
+## 🛠️ Architecture: The "Heterogeneous Zoo" Protocol
 
+The system operates as a **Red Teaming as a Service (RTaaS)** layer using 5 distinct neural architectures:
 
+* **Attacker Engine ($\pi_\theta$):** **Dolphin-Llama-3 (8B)** acting as the policy generator for adversarial prompts.
+* **Victim Zoo:** Federated endpoints including **TinyLlama-1.1B**, **Phi-2**, and **Mistral-7B-Instruct**.
+* **Market Shield (Judges):** A consensus ensemble (RoBERTa + Heuristics) that computes the *Market Signal*. Deviations or hallucinations result in immediate economic slashing (Negative Reward).
 
-The system operates as a **Red Teaming as a Service (RTaaS)** layer:
-* **Red Agents (Attacker):** Use Q-Learning to optimize attack vectors based on cost/reward ratios.
-* **Target Zoo (Victim):** Federated API endpoints (Client Models).
-* **Audit Committee (Judge):** A heterogeneous ensemble of NLI models that votes on safety. Deviations result in immediate economic slashing.
+## 📊 Deep Dive: The Sycophancy Audit
 
-## 📊 Results
+We subjected the models to the **RLMS Hallucination Audit** to test resistance against persuasive fabrication.
 
-### 1. The Cost of Defense (Slashing Mechanism)
-*Figure 1 demonstrates the economic penalty applied to an auditor (Orange Line) that failed to converge with the market truth.*
-![Slashing Graph](assets/peer_prediction.png)
+> **"The Confident Liar Phenomenon"**
 
-### 2. Generative Attack Discovery
-*Figure 2 shows the Q-Values for Llama-3 generated attacks. Note that "Roleplay" (Strategy 4) remains the only viable attack vector against Large models.*
-![Generative RL](assets/llama_rl.png)
+Our Market Signal metric collapsed to **-100 (Maximum Penalty)** when testing technical fabrications (e.g., fake Crypto Protocols). This confirms that without the RLMS incentive layer, models default to sycophancy.
 
-### 3. Cross-Model Robustness (The Zoo)
-*Figure 3 compares vulnerability across architectures. TinyLlama demonstrated superior baseline robustness compared to Flan-T5.*
-![Zoo Experiment](assets/zoo_attack.png)
+<img width="1039" height="553" alt="image" src="https://github.com/user-attachments/assets/0849b242-dee6-4323-9dca-502ad22fbdbf" />
+
+*(Figure 2: Economic quantification of Sycophancy. The red bars indicate a market crash signal triggered by confident hallucinations.)*
 
 ## 💻 Usage
 
 ### Prerequisites
-* Python 3.8+
-* GPU (A100 recommended for Multi-Model Zoo, T4 for single inference)
-* Hugging Face Token (for Llama-3 access)
+* Python 3.10+
+* GPU (A100 recommended for Training, T4 for Inference)
+* Hugging Face Token
 
 ### Installation
 ```bash
+git clone [https://github.com/matiaszabal/samsara-apart-hackathon.git](https://github.com/matiaszabal/samsara-apart-hackathon.git)
+cd samsara-apart-hackathon
 pip install -r requirements.txt
-```
-### Running the Zoo Experiment
-```bash
-python src/zoo_robustness.py --episodes 100 --targets "flan-t5,tinyllama"
-```
 
-### 🔮 Future Work: Threat Price Index (TPI)
+# Run the Learning Curve Benchmark
+python src/experiments/learning_curve.py --episodes 80
 
-We are developing the Threat Price Index, a metric that calculates the marginal cost of a successful exploit ($/success). This allows organizations to prioritize patching based on economic risk rather than theoretical severity.
+# Run the Sycophancy Audit
+python src/experiments/audit_sycophancy.py --model mistralai/Mistral-7B-Instruct-v0.2
 
----
+Future Work: Threat Price Index (TPI)
+We are developing the TPI to calculate the marginal cost of a successful exploit ($/success). This allows organizations to prioritize patching based on economic risk rather than theoretical severity.
+
 Submitted to Apart Research Hackathon 2026.
-
